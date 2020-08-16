@@ -15,6 +15,7 @@ define( 'ANDYP_WIDGET_PATH', plugins_url( '/', __FILE__ ) );
 // └─────────────────────────────────────────────────────────────────────────┘
 require __DIR__.'/src/acf/acf_admin_page.php';
 require __DIR__.'/src/acf/acf_get_options.php';
+require __DIR__.'/src/acf/acf_dashboard.php';
 
 // ┌─────────────────────────────────────────────────────────────────────────┐
 // │                             Load Widgets    		                     │
