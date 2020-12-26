@@ -10,7 +10,7 @@ if( function_exists('acf_add_options_page') ) {
         'menu_title' => '🔩 Admin Widgets',
         'menu_slug' => 'adminwidgets',
         'capability' => 'manage_options',
-        'position' => '1',
+        'position' => '2',
         'parent_slug' => 'andyp',
         'icon_url' => 'dashicons-screenoptions',
         'redirect' => true,
