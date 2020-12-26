@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: _ANDYP - Admin widgets
+Plugin Name: _ANDYP - Admin - Dashboard widgets
 Plugin URI: https://londonparkour.com
 Description: <strong>🔩Widget</strong> | Allows you to create widgets on the admin dashboard.
 Version: 1.0.0
