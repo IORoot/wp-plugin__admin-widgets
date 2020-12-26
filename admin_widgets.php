@@ -21,3 +21,9 @@ require __DIR__.'/src/acf/acf_dashboard.php';
 // │                             Load Widgets    		                     │
 // └─────────────────────────────────────────────────────────────────────────┘
 require __DIR__.'/src/widgets/admin_widgets.php';
+
+	
+//  ┌─────────────────────────────────────────────────────────────────────────┐
+//  │                    Register with ANDYP Plugins                          │
+//  └─────────────────────────────────────────────────────────────────────────┘
+require __DIR__.'/src/acf/andyp_plugin_register.php';
