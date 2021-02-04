@@ -25,8 +25,7 @@ require __DIR__.'/src/acf/andyp_plugin_register.php';
 //  ┌─────────────────────────────────────────────────────────────────────────┐
 //  │         Load everything else ONLY on API Scraper pages.                 │
 //  └─────────────────────────────────────────────────────────────────────────┘
-add_action( 'current_screen', 'acf_import_export_initialise' );
-function acf_import_export_initialise() {
+add_action( 'current_screen', function () {
     $current_screen = \get_current_screen();
     if ($current_screen->id == "toplevel_page_adminwidgets" || $current_screen->id == 'dashboard') {
         require __DIR__.'/src/acf/acf_get_options.php';
@@ -37,5 +36,4 @@ function acf_import_export_initialise() {
         // └─────────────────────────────────────────────────────────────────────────┘
         require __DIR__.'/src/widgets/admin_widgets.php';
     }
-    
-}
+});
