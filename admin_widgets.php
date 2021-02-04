@@ -23,7 +23,7 @@ require __DIR__.'/src/acf/andyp_plugin_register.php';
 
 
 //  ┌─────────────────────────────────────────────────────────────────────────┐
-//  │         Load everything else ONLY on API Scraper pages.                 │
+//  │         Load everything else ONLY on specific pages                     │
 //  └─────────────────────────────────────────────────────────────────────────┘
 add_action( 'current_screen', function () {
     $current_screen = \get_current_screen();
