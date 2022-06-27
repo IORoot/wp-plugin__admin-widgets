@@ -13,7 +13,6 @@ function menu_admin_widgets(){
             'menu_slug' => 'adminwidgets',
             'capability' => 'manage_options',
             'position' => 2,
-            'parent_slug' => 'andyp',
             'icon_url' => 'dashicons-screenoptions',
             'redirect' => true,
             'post_id' => 'options',
