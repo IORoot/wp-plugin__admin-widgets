@@ -4,9 +4,8 @@
 
 <div align="center">
 
-<div style="filter: invert(37%) sepia(37%) saturate(800%) hue-rotate(154deg) brightness(99%) contrast(100%);">
-<img src="https://cdn.jsdelivr.net/npm/@mdi/svg@6.7.96/svg/widgets-outline.svg" style="width:200px;"/>
-</div>
+
+<img src="https://svg-rewriter.sachinraja.workers.dev/?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2F%40mdi%2Fsvg%406.7.96%2Fsvg%2Fwidgets-outline.svg&fill=%23075985&width=200px&height=200px" style="width:200px;"/>
 
 <h3 align="center">Admin Dashboard iFrame Widgets</h3>
 
