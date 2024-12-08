@@ -8,32 +8,38 @@ Author: Andy Pearson
 Author URI: https://londonparkour.com
 */
 
-define( 'ANDYP_WIDGET_PATH', plugins_url( '/', __FILE__ ) );
-
 // ┌─────────────────────────────────────────────────────────────────────────┐
-// │                        		 Load ACF    		                     │
+// │                         Use composer autoloader                         │
 // └─────────────────────────────────────────────────────────────────────────┘
-require __DIR__.'/src/acf/acf_admin_page.php';
+require __DIR__.'/vendor/autoload.php';
 
 //  ┌─────────────────────────────────────────────────────────────────────────┐
-//  │                    Register with ANDYP Plugins                          │
+//  │                           Register CONSTANTS                            │
 //  └─────────────────────────────────────────────────────────────────────────┘
-require __DIR__.'/src/acf/andyp_plugin_register.php';
+define( 'WIDGET_PATH', __DIR__ );
+define( 'WIDGET_URL', plugins_url( '/', __FILE__ ) );
+define( 'WIDGET_FILE',  __FILE__ );
 
+// ┌─────────────────────────────────────────────────────────────────────────┐
+// │                        	   Initialise    		                     │
+// └─────────────────────────────────────────────────────────────────────────┘
+$widget = new widgets\initialise;
+$widget->run();
 
 
 //  ┌─────────────────────────────────────────────────────────────────────────┐
 //  │         Load everything else ONLY on specific pages                     │
 //  └─────────────────────────────────────────────────────────────────────────┘
-add_action( 'current_screen', function () {
-    $current_screen = \get_current_screen();
-    if ($current_screen->id == "toplevel_page_adminwidgets" || $current_screen->id == 'dashboard') {
-        require __DIR__.'/src/acf/acf_get_options.php';
-        require __DIR__.'/src/acf/acf_dashboard.php';
+// add_action( 'current_screen', function () {
+//     $current_screen = \get_current_screen();
+//     if ($current_screen->id == "toplevel_page_adminwidgets" || $current_screen->id == 'dashboard') {
+//         require __DIR__.'/src/acf/acf_get_options.php';
+//         require __DIR__.'/src/acf/acf_dashboard.php';
         
-        // ┌─────────────────────────────────────────────────────────────────────────┐
-        // │                             Load Widgets    		                     │
-        // └─────────────────────────────────────────────────────────────────────────┘
-        require __DIR__.'/src/widgets/admin_widgets.php';
-    }
-});
+//     }
+// });
+
+// ┌─────────────────────────────────────────────────────────────────────────┐
+// │                             Load Widgets    		                     │
+// └─────────────────────────────────────────────────────────────────────────┘
+// require __DIR__.'/src/widgets/admin_widgets.php';

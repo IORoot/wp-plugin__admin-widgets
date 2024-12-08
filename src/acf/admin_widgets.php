@@ -1,15 +1,9 @@
 <?php
 
-add_action('wp_dashboard_setup', 'dw_dashboard_widgets');
-
-function dw_dashboard_widgets()
-{
-    new dw_widgets;
-
-}
+namespace widgets\acf;
 
 
-class dw_widgets
+class admin_widgets
 {
 
     public $options;
@@ -19,9 +13,19 @@ class dw_widgets
 
     public function __construct()
     {
-        global $wp_meta_boxes;
+        add_action('wp_dashboard_setup', [$this,'run'], 50);
+    }
 
-        $this->get_options();
+
+    public function run()
+    {
+
+        $screen = get_current_screen();
+        $id = $screen->id;
+        if ($id !== 'dashboard') { return; }
+
+        global $wp_meta_boxes;
+        $this->options = get_field('dw_repeater', 'option');
         $this->create_dw_widgets();
 
     }
@@ -29,19 +33,11 @@ class dw_widgets
     
     public function create_dw_widgets()
     {
-
-        if (!$this->options)
-        {
-            return;
-        }
-
+        if (!$this->options) { return; }
 
         foreach($this->options as $widget)
         {
-            if ($widget['dw_header_group']['enabled'] == false)
-            {
-                continue;
-            }
+            if ($widget['dw_header_group']['enabled'] == false) { continue; }
 
             $this->current_widget = $widget;
             $this->add_widget();
@@ -51,7 +47,7 @@ class dw_widgets
     
     public function add_widget()
     {
-        $widget_slug = $this->current_widget['slug'];
+        $widget_slug = $this->current_widget['dw_slug'];
         $widget_name = $this->current_widget['dw_header_group']['dw_title'];
         $content = $this->current_widget['dw_code'];
         $callback = array($this, 'dw_content_callback');
@@ -64,20 +60,15 @@ class dw_widgets
 
     public function dw_content_callback($var, $args)
     {
-        $options = new dw\option;
-        $widget = $options->get_specific('dw_repeater','slug', $args['args']);
+        $code = "";
+        foreach ($this->options as $index => $option)
+        {
+            if ($option['dw_slug'] == $args['args']){
+                $code = $option['dw_code'];
+            }
+        }
 
-        echo $widget['dw_code'];
-    }
-
-
-
-
-
-    public function get_options()
-    {
-        $options = new dw\option;
-        $this->options = $options->get_all('dw_repeater');
+        echo $code;
     }
 
 }
